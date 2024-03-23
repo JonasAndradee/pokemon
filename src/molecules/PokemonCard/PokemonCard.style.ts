@@ -2,11 +2,16 @@
 
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface ContainerProps {
+  backgroundColor?: string;
+}
+
+export const Container = styled.div<ContainerProps>`
   display: flex;
-  background-color: #49caae;
-  padding: ${({ theme }) => theme.spacing.sm};
-  padding-left: ${({ theme }) => theme.spacing.md};
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  padding: ${({ theme }) => theme.spacing.md};
+  padding-left: ${({ theme }) => theme.spacing.xl};
+  padding-right: 0;
   border-radius: ${({ theme }) => theme.spacing.md};
 `;
 
@@ -18,6 +23,7 @@ export const Name = styled.p`
   ${({ theme }) => theme.typography.button};
   color: ${({ theme }) => theme.getColor("contrast_base")};
   margin-bottom: ${({ theme }) => theme.spacing.lg};
+  text-transform: capitalize;
 `;
 
 export const AttributeList = styled.div``;

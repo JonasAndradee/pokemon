@@ -9,32 +9,41 @@ import {
   Name,
   RightSideContent,
 } from "./PokemonCard.style";
-
-type Category = {
-  label: string;
-};
+import { colorByCategory } from "./data";
 
 interface PokemonCardProps {
   id: number;
   name: string;
-  categories?: Category[];
+  categories?: string[];
   imageSrc: string;
 }
+
+type ColorByCategoryType = { [key: string]: string };
 
 export const PokemonCard: FC<PokemonCardProps> = ({
   categories,
   name,
   imageSrc,
 }) => {
+  const getBackgroundByCategory = () => {
+    const firstCategory = categories && categories[0];
+    if (firstCategory) {
+      return (
+        (colorByCategory as ColorByCategoryType)[firstCategory] ||
+        colorByCategory["grass"]
+      );
+    }
+  };
+
   return (
-    <Container>
+    <Container backgroundColor={getBackgroundByCategory()}>
       <LeftSideContent>
         <Name>{name}</Name>
         <AttributeList>
           {Children.toArray(
-            categories?.map(({ label }) => (
-              <AttributeWrapper>
-                <Chip label={label} />
+            categories?.map((category) => (
+              <AttributeWrapper key={category}>
+                <Chip label={category} />
               </AttributeWrapper>
             ))
           )}

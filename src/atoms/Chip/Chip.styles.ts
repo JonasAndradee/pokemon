@@ -14,4 +14,5 @@ export const Label = styled.p`
   ${({ theme }) => theme.typography.caption2}
   color: ${({ theme }) => theme.getColor("contrast_base")};
   white-space: nowrap;
+  text-transform: capitalize;
 `;

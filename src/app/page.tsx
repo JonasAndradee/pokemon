@@ -1,5 +1,5 @@
-import Chip from "@atoms/Chip";
+import { PokemonList } from "../organisms/PokemonList";
 
 export default function Home() {
-  return <Chip label="Choque" />;
+  return <PokemonList />;
 }
