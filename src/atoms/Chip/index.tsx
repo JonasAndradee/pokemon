@@ -5,12 +5,10 @@ interface ChipProps {
   label: string;
 }
 
-const Chip: FC<ChipProps> = ({ label }) => {
+export const Chip: FC<ChipProps> = ({ label }) => {
   return (
     <Container>
       <Label>{label}</Label>
     </Container>
   );
 };
-
-export default Chip;
