@@ -1,6 +1,8 @@
 import { css } from "styled-components";
 import FontFamilies from "./fonts";
 
+const baseFont = 16;
+
 enum SizeKey {
   H1 = "h1",
   H2 = "h2",
@@ -28,79 +30,79 @@ export type StyleValue = {
 
 const typographyStyle: StyleValue = {
   [SizeKey.H1]: {
-    fontSize: 64,
+    fontSize: 64 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 72,
     fontWeight: 300,
   },
   [SizeKey.H2]: {
-    fontSize: 52,
+    fontSize: 52 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 48,
     fontWeight: 300,
   },
   [SizeKey.H3]: {
-    fontSize: 40,
+    fontSize: 40 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 48,
     fontWeight: 300,
   },
   [SizeKey.H4]: {
-    fontSize: 36,
+    fontSize: 36 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 44,
     fontWeight: 300,
   },
   [SizeKey.H5]: {
-    fontSize: 32,
+    fontSize: 32 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 38,
     fontWeight: 300,
   },
   [SizeKey.H6]: {
-    fontSize: 22,
+    fontSize: 22 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 32,
     fontWeight: 300,
   },
   [SizeKey.Subtitle1]: {
-    fontSize: 20,
+    fontSize: 20 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 24,
     fontWeight: 600,
   },
   [SizeKey.Body1]: {
-    fontSize: 18,
+    fontSize: 18 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 24,
     fontWeight: 400,
   },
   [SizeKey.Body2]: {
-    fontSize: 16,
+    fontSize: 16 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 24,
     fontWeight: 600,
   },
   [SizeKey.Caption1]: {
-    fontSize: 14,
+    fontSize: 14 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 20,
     fontWeight: 600,
   },
   [SizeKey.Caption2]: {
-    fontSize: 12,
+    fontSize: 12 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 16,
-    fontWeight: 600,
+    fontWeight: 400,
   },
   [SizeKey.Button]: {
-    fontSize: 18,
+    fontSize: 18 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 24,
     fontWeight: 600,
   },
   [SizeKey.Overline]: {
-    fontSize: 14,
+    fontSize: 14 / baseFont,
     fontFamily: FontFamilies.Inter,
     lineHeight: 24,
     fontWeight: 600,
@@ -108,7 +110,7 @@ const typographyStyle: StyleValue = {
 };
 
 const createStyle = (sizeKey: SizeKey) => css`
-  font-family: ${typographyStyle[sizeKey].fontFamily};
+  font-family: ${typographyStyle[sizeKey].fontFamily}, sans-serif;
   font-size: ${typographyStyle[sizeKey].fontSize}rem;
   line-height: ${typographyStyle[sizeKey].lineHeight}px;
   font-weight: ${typographyStyle[sizeKey].fontWeight};

@@ -17,4 +17,5 @@ const spacing: SpacingTheme = {
   xl: getSpacing(3),
   xxl: getSpacing(4),
 };
+
 export default spacing;
