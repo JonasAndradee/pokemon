@@ -14,4 +14,5 @@ export const colorByCategory = {
   bug: "#558855",
   dark: "#333333",
   ice: "#7690ac",
+  dragon: "#ff7f50",
 };

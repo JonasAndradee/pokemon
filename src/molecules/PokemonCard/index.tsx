@@ -16,6 +16,7 @@ interface PokemonCardProps {
   name: string;
   categories?: string[];
   imageSrc: string;
+  onCardClick?: () => void;
 }
 
 type ColorByCategoryType = { [key: string]: string };
@@ -24,6 +25,7 @@ export const PokemonCard: FC<PokemonCardProps> = ({
   categories,
   name,
   imageSrc,
+  onCardClick,
 }) => {
   const getBackgroundByCategory = () => {
     const firstCategory = categories && categories[0];
@@ -36,13 +38,16 @@ export const PokemonCard: FC<PokemonCardProps> = ({
   };
 
   return (
-    <Container $backgroundColor={getBackgroundByCategory()}>
+    <Container
+      onClick={onCardClick}
+      $backgroundColor={getBackgroundByCategory()}
+    >
       <LeftSideContent>
         <Name>{name}</Name>
         <AttributeList>
           {Children.toArray(
             categories?.map((category) => (
-              <AttributeWrapper key={category}>
+              <AttributeWrapper>
                 <Chip label={category} />
               </AttributeWrapper>
             ))
