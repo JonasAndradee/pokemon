@@ -1,23 +1,8 @@
-import { PokemonCard } from "@molecules/PokemonCard";
 import { pokemonService } from "../../services";
-import { Container, PokemonCardWrapper } from "./PokemonList.style";
+import { InfiniteScrollPokemonList } from "../InfiniteScrollPokemonList";
 
 export const PokemonList = async () => {
-  const pokemonList = await pokemonService.getAll();
+  const pokemonList = await pokemonService.getAll({ offset: 0, limit: 20 });
 
-  return (
-    <Container>
-      {pokemonList?.map(({ id, name, categories, urlImage }) => (
-        <PokemonCardWrapper key={id}>
-          <PokemonCard
-            key={id}
-            id={id}
-            name={name}
-            imageSrc={urlImage}
-            categories={categories}
-          />
-        </PokemonCardWrapper>
-      ))}
-    </Container>
-  );
+  return <InfiniteScrollPokemonList initialPokemonList={pokemonList} />;
 };

@@ -1,18 +1,16 @@
-"use client";
-
 import styled from "styled-components";
 
 interface ContainerProps {
-  backgroundColor?: string;
+  $backgroundColor?: string;
 }
 
 export const Container = styled.div<ContainerProps>`
   display: flex;
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   padding: ${({ theme }) => theme.spacing.md};
   padding-left: ${({ theme }) => theme.spacing.xl};
   padding-right: 0;
-  border-radius: ${({ theme }) => theme.spacing.md};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
 `;
 
 export const LeftSideContent = styled.div`

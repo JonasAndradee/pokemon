@@ -12,4 +12,6 @@ export const colorByCategory = {
   ground: "#CC9966",
   fairy: "#EC8484",
   bug: "#558855",
+  dark: "#333333",
+  ice: "#7690ac",
 };

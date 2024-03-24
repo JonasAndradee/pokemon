@@ -36,7 +36,7 @@ export const PokemonCard: FC<PokemonCardProps> = ({
   };
 
   return (
-    <Container backgroundColor={getBackgroundByCategory()}>
+    <Container $backgroundColor={getBackgroundByCategory()}>
       <LeftSideContent>
         <Name>{name}</Name>
         <AttributeList>
