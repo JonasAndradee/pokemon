@@ -5,11 +5,10 @@ interface PokemonAttributesProps {
   abilities: string[];
   height: number;
   weight: number;
-  species: string[];
 }
 
 export const PokemonAttributes: FC<PokemonAttributesProps> = (props) => {
-  const { abilities, height, weight, species } = props;
+  const { abilities, height, weight } = props;
   return (
     <Container>
       <Content>
@@ -23,10 +22,6 @@ export const PokemonAttributes: FC<PokemonAttributesProps> = (props) => {
       <Content>
         <Name>Weight:</Name>
         <Value>{weight}</Value>
-      </Content>
-      <Content>
-        <Name>Species:</Name>
-        <Value>{species?.join(", ")}</Value>
       </Content>
     </Container>
   );

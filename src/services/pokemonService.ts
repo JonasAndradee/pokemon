@@ -1,5 +1,18 @@
 import { Pokemon } from "../entities/pokemon";
 
+type Abilities = {
+  ability: {
+    name: "blaze";
+  };
+};
+
+type Stats = {
+  base_stat: 60;
+  stat: {
+    name: string;
+  };
+};
+
 interface PokemonResponse {
   id: number;
   name: string;
@@ -7,6 +20,10 @@ interface PokemonResponse {
     other: { home: { front_default: string } };
   };
   types: { type: { name: string } }[];
+  abilities: Abilities[];
+  height: number;
+  weight: number;
+  stats: Stats[];
 }
 
 interface GetAllResponse {
@@ -14,14 +31,29 @@ interface GetAllResponse {
 }
 
 const API_BASE_URL = "https://pokeapi.co/api/v2/pokemon";
-
-const mapResponseToPokemon = (response: PokemonResponse[]): Pokemon[] =>
-  response.map((pokemonResponse) => ({
+const FIFTEEN_CACHE_TTL = 90000;
+export const formatterResponseToPokemon = (
+  pokemonResponse: PokemonResponse
+): Pokemon => {
+  return {
     id: pokemonResponse.id,
     name: pokemonResponse.name,
     urlImage: pokemonResponse.sprites.other.home.front_default,
     categories: pokemonResponse.types.map((item) => item.type.name),
-  }));
+    abilities: pokemonResponse.abilities.map((item) => item.ability.name),
+    height: pokemonResponse.height,
+    weight: pokemonResponse.weight,
+    stats: pokemonResponse.stats.map((item) => ({
+      name: item.stat?.name,
+      value: item.base_stat,
+    })),
+  };
+};
+
+export const mapResponseToPokemon = (response: PokemonResponse[]): Pokemon[] =>
+  response?.map((pokemonResponse) =>
+    formatterResponseToPokemon(pokemonResponse)
+  );
 
 interface GetAllParams {
   limit?: number;
@@ -44,7 +76,9 @@ const getAll = async ({ limit, offset }: GetAllParams): Promise<Pokemon[]> => {
 };
 
 const getOne = async (name: string): Promise<PokemonResponse> => {
-  const res = await fetch(`${API_BASE_URL}/${name}`);
+  const res = await fetch(`${API_BASE_URL}/${name}`, {
+    next: { revalidate: FIFTEEN_CACHE_TTL },
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch data: getOne");

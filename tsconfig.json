@@ -20,9 +20,12 @@
     "paths": {
       "@bosons/*": ["./src/bosons/*"],
       "@atoms/*": ["./src/atoms/*"],
-      "@molecules/*": ["./src/molecules/*"]
+      "@molecules/*": ["./src/molecules/*"],
+      "@organisms/*": ["./src/organisms/*"],
+      "@services/*": ["./src/services/*"],
+      "@entities/*": ["./src/entities/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/molecules/PokemonCard/PokemonCard.style.ts."],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
