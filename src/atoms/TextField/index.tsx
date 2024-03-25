@@ -1,4 +1,4 @@
-import { ForwardRefRenderFunction, InputHTMLAttributes, Ref } from "react";
+import { FC, InputHTMLAttributes } from "react";
 import { Container, ErrorMessage, Input, Label } from "./TextField.styles";
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -6,18 +6,18 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   errorMessage?: string;
 }
 
-export const TextField: ForwardRefRenderFunction<
-  HTMLInputElement,
-  TextFieldProps
-> = (
-  { label, errorMessage, ...inputProps }: TextFieldProps,
-  ref: Ref<HTMLInputElement>
-) => {
+export const TextField: FC<TextFieldProps> = ({
+  label,
+  errorMessage,
+  ...inputProps
+}: TextFieldProps) => {
   return (
-    <Container>
+    <>
       {label && <Label>{label}</Label>}
-      <Input hasError={Boolean(errorMessage)} ref={ref} {...inputProps} />
-      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-    </Container>
+      <Container $hasError={Boolean(errorMessage)}>
+        <Input {...inputProps} />
+      </Container>
+      {Boolean(errorMessage) && <ErrorMessage>{errorMessage}</ErrorMessage>}
+    </>
   );
 };

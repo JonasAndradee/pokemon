@@ -4,7 +4,9 @@ export const Header = () => {
   return (
     <Container>
       <Content>
-        <Logo src="./logo-pokemon.png" />
+        <a href="/">
+          <Logo src="/logo-pokemon.png" />
+        </a>
         <MenuItemLink href="/contact">Entrar em contato</MenuItemLink>
       </Content>
     </Container>

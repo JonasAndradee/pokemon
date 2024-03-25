@@ -19,11 +19,10 @@ interface PokemonAbilityType {
 }
 
 export const Container = styled.div`
-  height: 100vh;
+  height: calc(100vh - 108px);
   display: flex;
   justify-content: space-between;
   position: relative;
-  background-color: ${({ theme }) => theme.getColor("neutral_100")};
 `;
 
 export const LeftSideContent = styled.div`
@@ -59,7 +58,7 @@ export const RightSideContent = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 100%;
+  width: 80%;
   height: auto;
   object-fit: cover;
   z-index: 1;
@@ -75,7 +74,7 @@ export const Triangle = styled.div<TriangleProps>`
   right: 0;
   width: 0;
   height: 0;
-  border-left: 60vw solid transparent;
-  border-bottom: 60vw solid ${({ $type }) => getBackgroundByCategory($type)};
+  border-left: 40vw solid transparent;
+  border-bottom: 40vw solid ${({ $type }) => getBackgroundByCategory($type)};
   z-index: 0;
 `;
