@@ -1,5 +1,10 @@
+import { MainTemplate } from "@templates/MainTemplate";
 import { PokemonList } from "../organisms/PokemonList";
 
 export default function Home() {
-  return <PokemonList />;
+  return (
+    <MainTemplate>
+      <PokemonList />
+    </MainTemplate>
+  );
 }
